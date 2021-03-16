@@ -11,6 +11,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.List;
 
+// A pasta dto é responsável por receber todos dados, nesse caso da pessoa e telefone.
 @Data
 @Builder
 @AllArgsConstructor
@@ -28,12 +29,12 @@ public class PersonDTO {
     private String lastName;
 
     @NotEmpty
-    @CPF
+    @CPF // Aqui ele já faz a validação do CPF
     private String cpf;
 
     private String birthDate;
 
-    @Valid
+    @Valid // Aqui mostra que cada membro da lista precisa ser validado, através dos atributos que passamos.
     @NotEmpty
     private List<PhoneDTO> phones;
 }

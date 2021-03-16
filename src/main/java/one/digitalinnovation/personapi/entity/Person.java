@@ -23,7 +23,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Person {
 
-    @Id
+    @Id // Basicamente mesma coisa que no arquivo Phone.java.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -33,11 +33,11 @@ public class Person {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true) // Com o unique = true, dizemos que o cpf tem que ser único.
     private String cpf;
 
-    private LocalDate birthDate;
+    private LocalDate birthDate; // Esse é o único não obrigatório.
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}) // Aqui temos o relacionamento das tabelas, esse faz com que uma pessoa possa ter vários números de telefone. Lazy é utilizado para performance o cascade insere uma pessoa já com o telefone relacionado, com essa opção podemos criar só a pessoa no momento de fazer o persist, merfe e remove.
     private List<Phone> phones;
 }
